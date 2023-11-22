@@ -7,16 +7,17 @@ import ModuleRoutes from "./Modules/routes.js";
 import "dotenv/config";
 
 const app = express()
+app.use(express.json());
 app.use(
     cors({
       credentials: true,
       origin: process.env.FRONTEND_URL
     })
   );
-  
+
 ModuleRoutes(app);
 CourseRoutes(app);
-app.use(express.json());
+
 Lab5(app);
 Hello(app)
 app.listen(process.env.PORT || 4000);
